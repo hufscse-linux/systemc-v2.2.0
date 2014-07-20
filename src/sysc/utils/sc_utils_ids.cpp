@@ -100,6 +100,9 @@ static sc_report_handler::msg_def_items items = {
     texts, sizeof(texts)/sizeof(*texts), false, 0
 };
 
+#include <stdlib.h>
+#include <string.h>
+
 static
 int initialize()
 {
@@ -107,7 +110,7 @@ int initialize()
 
     // PROCESS ANY ENVIRONMENTAL OVERRIDES:
 
-    const char* deprecation_warn = std::getenv("SC_DEPRECATION_WARNINGS");
+    const char* deprecation_warn = getenv("SC_DEPRECATION_WARNINGS");
     if ( (deprecation_warn!=0) && !strcmp(deprecation_warn,"DISABLE") )
     {
         sc_report_handler::set_actions("/IEEE_Std_1666/deprecated", 
